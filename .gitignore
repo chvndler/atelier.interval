@@ -1,7 +1,6 @@
 .DS_Store
-yarn.lock
-dist/.git
 package-lock.json
+atelier.p12
 ady.interval.zxp
 /framework
 framework.zip
