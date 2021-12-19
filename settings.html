@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ADY® INTERVAL (AE)</title>
+    <link rel="stylesheet" type="text/css" href="./css/base.css" />
+    <link rel="stylesheet" type="text/css" href="./css/ace.dark.css" />
+  </head>
+
+  <body class="body_page">
+    <div class="App">
+      <header class="App-header">
+        <img src="ATELIER.png" class="App-logo" id="logo" />
+      </header>
+
+      <section class="Section-core">
+        <div class="text">Select a style.</div>
+        <div class="ace-select">
+          <div class="ace-select-frame">
+            <input type="text" readonly autocomplete="off" placeholder="Select a style" class="ace-input-select" />
+            <span class="ace-select-suffix">
+              <i></i>
+            </span>
+          </div>
+          <dl class="ace-select-dropdown" id="selectStyle">
+            <dd value="default">Atelier® Default</dd>
+            <dd value="rainbows">Crispy Clean</dd>
+            <dd value="purple 08">Cherry Limeade</dd>
+            <dd value="purple 08">Rainbow</dd>
+          </dl>
+        </div>
+      </section>
+
+      <section class="Section-core">
+        <div class="switch--container">
+          <label class="ace-switch switch-checked">
+            <div class="text-switch">Toggle Grain</div>
+            <span class="ace-switch-checkmark"></span>
+            <input class="switch" name="switch" type="checkbox" data-style="switch" id="addGrain" checked />
+          </label>
+        </div>
+
+        <div class="sliderContainer">
+          <div class="sliderInfos">
+            <div class="text-slide">Grain Amount</div>
+            <div class="sliderValue" id="grainValue">100</div>
+          </div>
+
+          <div class="sliderBox">
+            <input type="range" class="ace-range" min="0" max="100" value="100" id="grainRange" />
+            <!-- <div class="progressBar" id="progress"></div> -->
+          </div>
+        </div>
+
+        <div class="sliderContainer">
+          <div class="sliderInfos">
+            <div class="text-slide">Red Blur</div>
+            <div class="sliderValue" id="redValue">30</div>
+          </div>
+
+          <div class="sliderBox">
+            <input type="range" class="ace-range" min="0" max="100" value="30" id="redRange" />
+            <!-- <div class="progressBar2" id="progress2"></div> -->
+          </div>
+        </div>
+      </section>
+
+      <section class="Section-core">
+        <button class="ace-btn-block">Button</button>
+      </section>
+    </div>
+    <!-- SCRIPTS -->
+    <script src="./js/libs/jquery.min.js"></script>
+    <script src="./js/ace.js"></script>
+    <script src="./js/config.dev.js"></script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "atelier.interval",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "zxp-cert": "zxpbuild cert --country US --state NC --group Atelier® --name com.ady.interval --output /Users/chvndler/Projects/chvndler/atelier.aeft/atelier.p12 --password 2112Ady",
+    "zxp-pkg": "zxpbuild package --input /Users/chvndler/Projects/chvndler/atelier.aeft --output /Users/chvndler/Projects/chvndler/atelier.aeft/ady.interval.zxp --cert atelier.p12 --password 2112Ady --timestamp http://timestamp.digicert.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chvndler/atelier.aeft.git"
+  },
+  "author": "chvndler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chvndler/atelier.aeft/issues"
+  },
+  "homepage": "https://github.com/chvndler/atelier.aeft#readme",
+  "dependencies": {
+    "prettier": "^2.5.1",
+    "zxp-builder": "^1.0.3"
+  },
+  "devDependencies": {}
+}

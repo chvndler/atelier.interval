@@ -1,0 +1,11 @@
+<ExtensionList>
+    <Extension Id="com.ady.interval.panel">
+        <HostList>
+            <Host Name="ILST" Port="8084"/>
+            <Host Name="AEFT" Port="8090"/>
+            <Host Name="PHSP" Port="8091"/>
+            <Host Name="PHXS" Port="8092"/>
+            <Host Name="IDSN" Port="8093"/>
+        </HostList>
+    </Extension>
+</ExtensionList>
