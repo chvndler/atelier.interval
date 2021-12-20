@@ -9,6 +9,9 @@ node_modules
 node_modules/
 
 MOV_FILES/
+mov/
+mov
+/mov
 
 # Logs
 logs
