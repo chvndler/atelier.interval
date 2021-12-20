@@ -42,6 +42,16 @@ function toggleGrain(isToggle) {
   }
 }
 
+function redHalationChange(value) {
+  //OK //default 80
+  for (i = 1; i < comp.numLayers; i++) {
+    if (comp.layer(i).name == 'RED & BLUR') {
+      var effect = comp.layer(i);
+      effect.property('ADBE Effect Parade').property(1).property('ADBE Channel Blur-0001').setValue(value);
+    }
+  }
+}
+
 function selectedLayer() {
   if (app.project.activeItem == null) {
     return '';
@@ -215,7 +225,7 @@ function importToComp() {
       transformAV.parentFolder = assetsFolder;
       calqueDeffets1_tempSolid.remove();
     }
-    // CREATE AVLAYERS to add on the comp
+    // CREATE AVLAYERS TO ADD TO COMP
     var flickerAV_properties = {
       name: 'FLICKER',
       typeName: 'Footage',
