@@ -12,14 +12,14 @@
  * written permission of Adobe.
  **************************************************************************/
 
-//DIRECTORY
+// DIRECTORY
 var comp;
 
-//var folder;
+// var FOLDER;
 var mainLayer, layerLength, assetsFolder;
 
 function grainLevelChange(value) {
-  //OK //default 0
+  //OK // DEFAULT IS 100
   for (i = 1; i < comp.numLayers; i++) {
     if (comp.layer(i).name == '03-GRAIN.mp4') {
       var effect = comp.layer(i);
@@ -28,12 +28,16 @@ function grainLevelChange(value) {
   }
 }
 
-function blooomAmoutChange(value) {
-  //OK//default 44
+function toggleGrain(isToggle) {
   for (i = 1; i < comp.numLayers; i++) {
-    if (comp.layer(i).name == 'RED & BLUR') {
-      var effect = comp.layer(i);
-      effect.property('ADBE Effect Parade').property(2).property('ADBE Gaussian Blur 2-0001').setValue(value);
+    if (comp.layer(i).name == '03-GRAIN.mp4') {
+      if (isToggle == 'true') {
+        comp.layer(i).enabled = true;
+      }
+      if (isToggle == 'false') {
+        comp.layer(i).enabled = false;
+      }
+      return;
     }
   }
 }
@@ -42,21 +46,31 @@ function selectedLayer() {
   if (app.project.activeItem == null) {
     return '';
   } else {
-    //After Validating, running Every functions.
+    // AFTER VALIDATION, RUN EVERY FUNCTION.
     comp = app.project.activeItem;
     return comp.selectedLayers[0].name.toString();
   }
 }
 
+// TEST STRING
 function test(txt) {
   alert(txt.toString());
 }
 
+// BEGIN UNDO GROUP
+function submitClick(val) {
+  app.beginUndoGroup('Precompile');
+  precompileList(val);
+  app.endUndoGroup();
+}
+
+// RUN MAIN SCRIPT // "Continue Button"
 function applyClick(dir) {
   if (app.project.activeItem == null) {
     alert('Please, select a composition.');
     return null;
   }
+
   comp = app.project.activeItem;
 
   if (comp.selectedLayers.length < 1) {
@@ -66,33 +80,32 @@ function applyClick(dir) {
     alert('Please, select only 1 layer in your composition.');
     return null;
   } else {
-    //After Validating, running Every functions.
-
     var compileList = [];
     var indexList = [];
 
-    //Set files Directory
+    // SET THE FILES DIRECTORY
     var a = dir;
-    a += '/MOV_FILES';
+    a += '/mov'; // RENAMED TO (/mov)
     var str = a.substring(1);
 
     var thisFile = new File(str);
-
     var folder = new Folder(thisFile);
     var files = folder.getFiles();
 
-    //set Comp/Layer
+    // SET THE COMP / LAYER
     comp.name = 'ADY™ _ Composition';
     mainLayer = comp.selectedLayers[0];
 
-    app.beginUndoGroup('ADY01');
+    app.beginUndoGroup('ADY001');
 
     layerLength = mainLayer.outPoint;
+
+    // DUPLICATE FOOTAGE CALL
     duplicateLayer();
     createFolder();
-    //alert("createFolder"+" Done");
+    // alert("createFolder"+" Done");
     importToComp();
-    //alert("importToComp"+" Done");
+    // alert("importToComp"+" Done");
     importFiles(files);
 
     app.endUndoGroup();
@@ -101,45 +114,12 @@ function applyClick(dir) {
   }
 }
 
-function submitClick(val) {
-  app.beginUndoGroup('Precompile');
-  precompileList(val);
-  app.endUndoGroup();
-}
-
-function togglePerforation(isToggle) {
-  for (i = 1; i < comp.numLayers; i++) {
-    if (comp.layer(i).name == '08-SQUARE_OVERLAY.mp4') {
-      if (isToggle == 'true') {
-        comp.layer(i).enabled = true;
-      }
-      if (isToggle == 'false') {
-        comp.layer(i).enabled = false;
-      }
-      return;
-    }
-  }
-}
-
-function toggleFilmBurns(isToggle) {
-  for (i = 1; i < comp.numLayers; i++) {
-    if (comp.layer(i).name == '06-FILM_BURNS.mov') {
-      if (isToggle == 'true') {
-        comp.layer(i).enabled = true;
-      }
-      if (isToggle == 'false') {
-        comp.layer(i).enabled = false;
-      }
-      return;
-    }
-  }
-}
-
 function remove() {
   deleteFiles();
   deleteFiles();
 }
 
+// UNDO FUNCTION
 function deleteFiles() {
   app.beginUndoGroup('Removing Layers');
   // precompileList (indexList);
@@ -159,13 +139,14 @@ function deleteFiles() {
     'COLOR GLOW',
     'FLICKER',
   ];
-  //remove from layers by altering
+
+  // REMOVE LAYERS BY ALTERING HERE
   var k, l, m;
   for (k = 0; k < list.length; k++) {
     for (l = 1; l < app.project.numItems + 1; l++) {
       if (list[k] == app.project.item(l).name) {
         app.project.item(l).remove();
-      } else if (app.project.item(l).name == 'ADY™-Assets') {
+      } else if (app.project.item(l).name == '(ADY)-Assets') {
         app.project.item(l).remove();
       }
     }
@@ -183,6 +164,7 @@ function deleteFiles() {
   app.endUndoGroup();
 }
 
+// BEGIN DUPLICATION FUNCTION
 function duplicateLayer() {
   //DUPLICATE MAIN LAYER
   var height = (115 / 1080) * comp.height - comp.height;
@@ -215,8 +197,10 @@ function importToComp() {
   var col = [1, 1, 1];
   var px = 1;
 
+  // I MADE IT TO HERE ----------------
+
   try {
-    //                                EDIT HERE----------------
+    //
     var transformAV_properties = {
       name: 'TRANSFORM',
       typeName: 'Footage',
