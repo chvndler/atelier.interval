@@ -124,6 +124,32 @@ function applyClick(dir) {
   }
 }
 
+// BEGIN DUPLICATION FUNCTION
+function duplicateLayer() {
+  //DUPLICATE MAIN LAYER
+  var height = (115 / 1080) * comp.height - comp.height;
+  var height2 = (1020 / 1080) * comp.height;
+
+  var pos = mainLayer.transform.position.value;
+  var layerTop = mainLayer.duplicate();
+  layerTop.name = 'Top clip';
+  layerTop.audioEnabled = false;
+  layerTop.transform.position.setValue(pos + [0, height]);
+  var topBlur = layerTop.property('ADBE Effect Parade').addProperty('ADBE Gaussian Blur 2');
+  topBlur.name = 'GAUSSIAN BLUR';
+  topBlur.property('ADBE Gaussian Blur 2-0001').setValue(88);
+  topBlur.property('ADBE Gaussian Blur 2-0002').setValue(3);
+
+  var layerBot = mainLayer.duplicate();
+  layerBot.name = 'Bot clip';
+  layerBot.transform.position.setValue(pos + [0, height2]);
+  layerBot.audioEnabled = false;
+  var botBlur = layerBot.property('ADBE Effect Parade').addProperty('ADBE Gaussian Blur 2');
+  botBlur.name = 'GAUSSIAN BLUR';
+  botBlur.property('ADBE Gaussian Blur 2-0001').setValue(88);
+  botBlur.property('ADBE Gaussian Blur 2-0002').setValue(3);
+}
+
 function remove() {
   deleteFiles();
   deleteFiles();
@@ -172,32 +198,6 @@ function deleteFiles() {
   }
 
   app.endUndoGroup();
-}
-
-// BEGIN DUPLICATION FUNCTION
-function duplicateLayer() {
-  //DUPLICATE MAIN LAYER
-  var height = (115 / 1080) * comp.height - comp.height;
-  var height2 = (1020 / 1080) * comp.height;
-
-  var pos = mainLayer.transform.position.value;
-  var layerTop = mainLayer.duplicate();
-  layerTop.name = 'Top clip';
-  layerTop.audioEnabled = false;
-  layerTop.transform.position.setValue(pos + [0, height]);
-  var topBlur = layerTop.property('ADBE Effect Parade').addProperty('ADBE Gaussian Blur 2');
-  topBlur.name = 'GAUSSIAN BLUR';
-  topBlur.property('ADBE Gaussian Blur 2-0001').setValue(88);
-  topBlur.property('ADBE Gaussian Blur 2-0002').setValue(3);
-
-  var layerBot = mainLayer.duplicate();
-  layerBot.name = 'Bot clip';
-  layerBot.transform.position.setValue(pos + [0, height2]);
-  layerBot.audioEnabled = false;
-  var botBlur = layerBot.property('ADBE Effect Parade').addProperty('ADBE Gaussian Blur 2');
-  botBlur.name = 'GAUSSIAN BLUR';
-  botBlur.property('ADBE Gaussian Blur 2-0001').setValue(88);
-  botBlur.property('ADBE Gaussian Blur 2-0002').setValue(3);
 }
 
 function importToComp() {
@@ -509,7 +509,7 @@ function precompileList(layerName) {
 }
 
 function createFolder() {
-  var folder_properties = { name: 'ADY™ Assets', typeName: 'Folder', label: 2, comment: '' };
+  var folder_properties = { name: '(ADY)-Assets', typeName: 'Folder', label: 2, comment: '' };
   assetsFolder = findProjectItem(app.project.rootFolder, false, folder_properties);
   if (assetsFolder === null) {
     assetsFolder = app.project.items.addFolder('ADY™-Assets');
