@@ -110,6 +110,11 @@ function applyClick(dir) {
 
     layerLength = mainLayer.outPoint;
 
+    runStyleOne();
+    runStyleTwo();
+    runStyleThree();
+    runStyleFour();
+
     // DUPLICATE FOOTAGE CALL
     duplicateLayer();
     createFolder();
@@ -123,6 +128,10 @@ function applyClick(dir) {
     return 'ok';
   }
 }
+
+// YOU'LL NEED TO DEFINE ALL OF THE RUN STYLES
+// WITH SEPERATE DUPLICATE, CREATEFOLDER, IMPORTS, IMPORT FILES(FILES),
+// AND ALL OF THIS WILL BE AN UNDOGROUP BEGIN AND END.
 
 // BEGIN DUPLICATION FUNCTION
 function duplicateLayer() {

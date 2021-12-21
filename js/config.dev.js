@@ -2,25 +2,9 @@
   //MAIN FUNCTION
   'use strict';
 
-  var cs = new CSInterface();
+  // var cs = new CSInterface();
 
   document.addEventListener('DOMContentLoaded', function () {});
-
-  document.getElementById('logo').addEventListener('click', function () {
-    cs.openURLInDefaultBrowser('https://www.ady.world');
-  });
-
-  document.getElementById('backButton').addEventListener('click', function () {
-    cs.evalScript('remove()', function (res) {
-      window.location.href = 'index.html';
-    });
-  });
-
-  document.getElementById('endButton').addEventListener('click', function () {
-    cs.evalScript('submitClick("' + mainLayer + '")', function (res) {
-      window.location.href = 'index.html';
-    });
-  });
 
   // SLIDE 1
   var slide = document.getElementById('grainRange');
@@ -32,7 +16,7 @@
     var cur = this.value - this.min;
     var max = this.max - this.min;
     var val = document.getElementById('grainRange').value;
-    cs.evalScript('grainLevelChange("' + val + '")', function (res) {});
+    // cs.evalScript('grainLevelChange("' + val + '")', function (res) {});
   };
 
   // SLIDE 2
@@ -45,6 +29,21 @@
     var cur = this.value - this.min;
     var max = this.max - this.min;
     var val = document.getElementById('redRange').value;
-    cs.evalScript('redAmoutChange("' + val + '")', function (res) {});
+    // cs.evalScript('redAmoutChange("' + val + '")', function (res) {});
   };
+
+  document.getElementById('addGrain').addEventListener('click', function () {
+    var check = document.getElementById('addGrain').checked;
+    console.log('checked');
+
+    // cs.evalScript('toggleGrain("' + check + '")', function () {});
+  });
+
+  // STYLE TOGGLE SECTION
+  document.getElementById('styleOne').addEventListener('click', function () {
+    var check = document.getElementById('styleOne').checked;
+    console.log('Atelier® Default – STYLE');
+
+    // cs.evalScript('runStyleOne("' + check + '")', function () {});
+  });
 })();

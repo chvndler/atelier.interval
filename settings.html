@@ -14,22 +14,17 @@
         <img src="ATELIER.png" class="App-logo" id="logo" />
       </header>
 
+      <!--
       <section class="Section-core">
         <div class="text">Select a style.</div>
         <div class="ace-select">
           <div class="ace-select-frame">
-            <input
-              type="text"
-              readonly
-              autocomplete="off"
-              placeholder="Select a style"
-              class="ace-input-select"
-            />
+            <input type="text" autocomplete="off" placeholder="Select a style" class="ace-input-select" />
             <span class="ace-select-suffix">
               <i></i>
             </span>
           </div>
-          <dl class="ace-select-dropdown" id="selectStyle">
+          <dl class="ace-select-dropdown">
             <dd value="default">Atelier® Default</dd>
             <dd value="rainbows">Crispy Clean</dd>
             <dd value="purple 08">Cherry Limeade</dd>
@@ -37,20 +32,27 @@
           </dl>
         </div>
       </section>
+    -->
+
+      <div class="text">Toggle styles below.</div>
 
       <section class="Section-core">
+        <!-- Switch Container One -->
         <div class="switch--container">
           <label class="ace-switch switch-checked">
-            <div class="text-switch">Toggle Grain</div>
+            <div class="text-switch">Style.001</div>
             <span class="ace-switch-checkmark"></span>
-            <input
-              class="switch"
-              name="switch"
-              type="checkbox"
-              data-style="switch"
-              id="addGrain"
-              checked
-            />
+            <input class="switch" name="switch" type="checkbox" data-style="switch" id="styleOne" checked />
+          </label>
+          <span class="style--text">Atelier® Default</span>
+        </div>
+
+        <!-- Switch Container Two -->
+        <div class="switch--container">
+          <label class="ace-switch switch-checked">
+            <div class="text-switch">Style 02</div>
+            <span class="ace-switch-checkmark"></span>
+            <input class="switch" name="switch" type="checkbox" data-style="switch" id="addGrain" checked />
           </label>
         </div>
 
@@ -61,14 +63,7 @@
           </div>
 
           <div class="sliderBox">
-            <input
-              type="range"
-              class="ace-range"
-              min="0"
-              max="100"
-              value="100"
-              id="grainRange"
-            />
+            <input type="range" class="ace-range" min="0" max="100" value="100" id="grainRange" />
             <!-- <div class="progressBar" id="progress"></div> -->
           </div>
         </div>
@@ -80,14 +75,7 @@
           </div>
 
           <div class="sliderBox">
-            <input
-              type="range"
-              class="ace-range"
-              min="0"
-              max="100"
-              value="30"
-              id="redRange"
-            />
+            <input type="range" class="ace-range" min="0" max="100" value="30" id="redRange" />
             <!-- <div class="progressBar2" id="progress2"></div> -->
           </div>
         </div>
