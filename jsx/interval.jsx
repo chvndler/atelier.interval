@@ -110,11 +110,6 @@ function applyClick(dir) {
 
     layerLength = mainLayer.outPoint;
 
-    runStyleOne();
-    runStyleTwo();
-    runStyleThree();
-    runStyleFour();
-
     // DUPLICATE FOOTAGE CALL
     duplicateLayer();
     createFolder();
@@ -162,10 +157,11 @@ function duplicateLayer() {
 function remove() {
   deleteFiles();
   deleteFiles();
+  deleteStyleOneFiles();
 }
 
 // UNDO FUNCTION
-function deleteFiles() {
+function deleteStyleOneFiles() {
   app.beginUndoGroup('Removing Layers');
   // precompileList (indexList);
 
